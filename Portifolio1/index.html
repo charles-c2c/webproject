@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charles · creative portfolio</title>
+  <!-- Font & icons (simple) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- RESET / VARIABLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background-color: #faf9f6;   /* soft neutral off-white */
+      color: #1e1e1e;
+      line-height: 1.5;
+    }
+
+    /* neutral tones + bright accent (vibrant cyan) */
+    :root {
+      --bg-light: #faf9f6;
+      --bg-card: #ffffff;
+      --text-dark: #1e1e1e;
+      --text-soft: #4a4a4a;
+      --border-light: #e6e6e6;
+      --accent: #0fbfbf;           /* fresh teal / bright accent */
+      --accent-dark: #0b9b9b;
+      --max-width: 1200px;
+      --border-radius: 20px;
+      --card-radius: 16px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- TYPOGRAPHY & LINKS ---------- */
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    /* ---------- BUTTON & ACCENTS ---------- */
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 40px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-size: 1rem;
+      box-shadow: 0 6px 12px rgba(15, 191, 191, 0.25);
+    }
+    .btn:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px rgba(15, 191, 191, 0.3);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* ---------- HEADER / NAV (optional minimalist) ---------- */
+    .navbar {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+    }
+    .logo span {
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-soft);
+      transition: color 0.2s;
+      font-size: 1.1rem;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 40px 0 60px;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      flex: 1 1 300px;
+    }
+    .hero-content h1 {
+      font-size: 3.8rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .hero-content .name-highlight {
+      color: var(--accent);
+      border-bottom: 4px solid var(--accent);
+    }
+    .hero-content .elevator {
+      font-size: 1.3rem;
+      color: var(--text-soft);
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+    .hero-image {
+      flex: 0 0 280px;
+      height: 280px;
+      background: linear-gradient(145deg, #d9d9d9, #efefef);
+      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.25);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%230fbfbf20"><circle cx="50" cy="50" r="40"/><path d="M20 30 Q 40 10 80 20 L 70 70 Q 40 90 20 70 Z" fill="%230fbfbf40"/></svg>');
+      background-size: cover;
+      background-blend-mode: overlay;
+      background-color: #e0f0f0;
+    }
+    /* mobile adjustment */
+    @media (max-width: 700px) {
+      .hero-grid { justify-content: center; text-align: center; }
+      .hero-content h1 { font-size: 2.8rem; }
+      .hero-image { width: 220px; height: 220px; flex-basis: 220px; }
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-text {
+      max-width: 800px;
+      font-size: 1.2rem;
+      color: var(--text-soft);
+      background: var(--bg-card);
+      padding: 32px 40px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--border-light);
+      margin-top: 20px;
+    }
+    .about-text strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ---------- PROJECTS GRID (with unsplash images) ---------- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 18px -8px rgba(0,0,0,0.05);
+    }
+    .project-card:hover {
+      transform: scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 20px 28px -12px rgba(15, 191, 191, 0.3);
+    }
+    .thumbnail {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #cbf0f0; /* fallback */
+    }
+    /* unsplash images as background */
+    .project1 {
+      background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); /* coding / react */
+    }
+    .project2 {
+      background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); /* data viz / dashboard */
+    }
+    .project3 {
+      background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); /* UI / components */
+    }
+    .project4 {
+      background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); /* wellness / app concept */
+    }
+    .card-content {
+      padding: 24px 20px;
+    }
+    .card-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+    .card-content p {
+      color: var(--text-soft);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tech-tags span {
+      background: #f0f0f0;
+      color: #1e1e1e;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-weight: 500;
+      border: 1px solid #dadada;
+    }
+
+    /* ---------- SKILLS ---------- */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 30px;
+    }
+    .skill-item {
+      background: white;
+      border: 1px solid var(--border-light);
+      padding: 16px 32px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-item:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      transform: scale(1.02);
+    }
+    .skill-item:before {
+      content: "▹";
+      color: var(--accent);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* ---------- CONTACT FORM ---------- */
+    .contact-form {
+      max-width: 640px;
+      background: var(--bg-card);
+      padding: 48px;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 18px 30px -12px rgba(0,0,0,0.05);
+      margin-top: 30px;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 16px 20px;
+      background: #f5f5f5;
+      border: 1px solid var(--border-light);
+      border-radius: 40px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    textarea {
+      border-radius: 28px;
+      resize: vertical;
+      min-height: 120px;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(15, 191, 191, 0.15);
+    }
+    .form-btn {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 16px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .form-btn:hover {
+      background: var(--accent-dark);
+    }
+    .small-note {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #777;
+      text-align: center;
+    }
+
+    /* ---------- FOOTER (minimal) ---------- */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* ---------- MOBILE TWEAKS ---------- */
+    @media (max-width: 480px) {
+      h2 { font-size: 1.9rem; }
+      .navbar { flex-direction: column; gap: 16px; }
+      .nav-links { gap: 20px; }
+      .hero-content h1 { font-size: 2.4rem; }
+      .contact-form { padding: 28px; }
+      .skill-item { padding: 12px 20px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- simple header -->
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">CHARLES<span>.</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- HERO section (with name) -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1>
+          <span class="name-highlight">CHARLES</span><br>
+          builds digital<br>experiences.
+        </h1>
+        <p class="elevator">
+          Creative web developer & designer — I turn complex ideas into fluid, human-friendly interfaces.
+        </p>
+        <a href="#projects" class="btn">View Projects →</a>
+      </div>
+      <div class="hero-image" aria-label="abstract creative portrait"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT section (short bio) -->
+  <section id="about" class="section container">
+    <h2>About me</h2>
+    <div class="about-text">
+      <p>👋 I'm Charles – a multidisciplinary creator with a passion for <strong>minimal yet bold design</strong>. Over the past 6 years I've helped startups and artists bring their stories to the web. I believe in neutral canvases with bright accents (just like this site!). Outside code, I sketch, brew coffee, and chase northern lights. </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS grid with Unsplash images -->
+  <section id="projects" class="section container">
+    <h2>Selected projects</h2>
+    <div class="projects-grid">
+      <!-- project 1 - Flui.d (coding workspace) -->
+      <div class="project-card">
+        <div class="thumbnail project1" title="React + Three.js project"></div>
+        <div class="card-content">
+          <h3>Flui.d</h3>
+          <p>Generative portfolio for a visual artist. Full-screen fluid transitions.</p>
+          <div class="tech-tags"><span>React</span><span>Three.js</span><span>CSS</span></div>
+        </div>
+      </div>
+      <!-- project 2 - EcoDash (dashboard / analytics) -->
+      <div class="project-card">
+        <div class="thumbnail project2" title="data dashboard visualization"></div>
+        <div class="card-content">
+          <h3>EcoDash</h3>
+          <p>Sustainability dashboard with live carbon analytics and team tools.</p>
+          <div class="tech-tags"><span>Vue</span><span>D3</span><span>Figma</span></div>
+        </div>
+      </div>
+      <!-- project 3 - Bloom (component library / UI) -->
+      <div class="project-card">
+        <div class="thumbnail project3" title="UI component library"></div>
+        <div class="card-content">
+          <h3>Bloom</h3>
+          <p>Modular component library built for rapid prototyping and brand consistency.</p>
+          <div class="tech-tags"><span>Storybook</span><span>React</span><span>SCSS</span></div>
+        </div>
+      </div>
+      <!-- project 4 - Moment (wellness app concept) -->
+      <div class="project-card">
+        <div class="thumbnail project4" title="wellness mobile app design"></div>
+        <div class="card-content">
+          <h3>Moment</h3>
+          <p>Wellness app concept – calm interactions & expressive micro-animations.</p>
+          <div class="tech-tags"><span>Flutter</span><span>Firebase</span><span>Figma</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS section -->
+  <section id="skills" class="section container">
+    <h2>Toolkit & skills</h2>
+    <div class="skills-list">
+      <span class="skill-item">Figma</span>
+      <span class="skill-item">Python</span>
+      <span class="skill-item">React</span>
+      <span class="skill-item">Vue</span>
+      <span class="skill-item">Node.js</span>
+      <span class="skill-item">Tailwind</span>
+      <span class="skill-item">Three.js</span>
+      <span class="skill-item">Illustrator</span>
+      <span class="skill-item">TypeScript</span>
+    </div>
+  </section>
+
+  <!-- CONTACT section (simple form) -->
+  <section id="contact" class="section container">
+    <h2>Let’s connect</h2>
+    <div class="contact-form">
+      <form id="simpleContact" action="#" method="post">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="form-btn">Send message</button>
+        <p class="small-note">(this is a demo — no data is stored)</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer container">
+    <p>© 2025 CHARLES · neutral tones with an accent</p>
+  </footer>
+
+  <!-- micro JavaScript (form alert, smooth scroll) -->
+  <script>
+    (function() {
+      // Simple alert on form submit (prevent actual POST)
+      const form = document.getElementById('simpleContact');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          // tiny feedback
+          alert('✨ Thanks for reaching out, Charles will get back to you (demo).');
+          form.reset(); // optional reset
+        });
+      }
+
+      // smooth scroll for nav links and view projects button
+      const scrollToElement = (selector) => {
+        const el = document.querySelector(selector);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      const navLinks = document.querySelectorAll('.nav-links a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href'); // #about etc
+          if (targetId && targetId.startsWith('#')) {
+            e.preventDefault();
+            scrollToElement(targetId);
+          }
+        });
+      });
+
+      const viewBtn = document.querySelector('.btn[href="#projects"]');
+      if(viewBtn) {
+        viewBtn.addEventListener('click', function(e){
+          e.preventDefault();
+          scrollToElement('#projects');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
